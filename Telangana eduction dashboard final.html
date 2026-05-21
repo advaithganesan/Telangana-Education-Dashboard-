@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telangana Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#020617;color:white}
+.card{background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px}
+</style>
+</head>
+<body>
+<div class="p-6">
+<h1 class="text-4xl font-bold text-cyan-400 mb-2">Telangana Education Executive Dashboard</h1>
+<p class="text-slate-400 mb-6">CEO & CFO education infrastructure intelligence view</p>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+<div class="card"><div class="text-slate-400">Total Schools</div><div class="text-3xl font-bold">11,073</div></div>
+<div class="card"><div class="text-slate-400">Enrollment</div><div class="text-3xl font-bold">2.21M</div></div>
+<div class="card"><div class="text-slate-400">HE Institutions</div><div class="text-3xl font-bold">2,122</div></div>
+<div class="card"><div class="text-slate-400">HE Seats</div><div class="text-3xl font-bold">382,931</div></div>
+<div class="card"><div class="text-slate-400">Avg Enrollment</div><div class="text-3xl font-bold">552K</div></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="card"><h2 class="text-xl font-semibold mb-4">District-wise Total Schools</h2><canvas id="barChart"></canvas></div>
+<div class="card"><h2 class="text-xl font-semibold mb-4">Higher Education Distribution</h2><canvas id="pieChart"></canvas></div>
+<div class="card"><h2 class="text-xl font-semibold mb-4">Seat Capacity vs Enrollment</h2><canvas id="scatterChart"></canvas></div>
+<div class="card"><h2 class="text-xl font-semibold mb-4">Enrollment Efficiency</h2><canvas id="efficiencyChart"></canvas></div>
+</div>
+</div>
+<script>
+new Chart(document.getElementById('barChart'), {
+ type:'bar',
+ data:{labels:['Hyderabad','Rangareddy','Medchal','Warangal'],datasets:[{label:'Schools',data:[3486,3005,2626,1956],backgroundColor:'#3b82f6'}]},
+ options:{plugins:{legend:{labels:{color:'white'}}},scales:{x:{ticks:{color:'white'}},y:{ticks:{color:'white'}}}}
+});
+new Chart(document.getElementById('pieChart'), {
+ type:'pie',
+ data:{labels:['Engineering','Degree','MBA','Law','Pharmacy'],datasets:[{data:[189,688,151,25,77],backgroundColor:['#3b82f6','#06b6d4','#10b981','#f59e0b','#8b5cf6']}]} ,
+ options:{plugins:{legend:{labels:{color:'white'}}}}
+});
+new Chart(document.getElementById('scatterChart'), {
+ type:'scatter',
+ data:{datasets:[{label:'Districts',data:[{x:852184,y:82171},{x:609100,y:152500},{x:462800,y:103800},{x:290500,y:44460}],backgroundColor:'#06b6d4'}]},
+ options:{plugins:{legend:{labels:{color:'white'}}},scales:{x:{ticks:{color:'white'}},y:{ticks:{color:'white'}}}}
+});
+new Chart(document.getElementById('efficiencyChart'), {
+ type:'bar',
+ data:{labels:['Hyderabad','Rangareddy','Medchal','Warangal'],datasets:[{label:'Enrollment per School',data:[244,203,176,149],backgroundColor:'#14b8a6'}]},
+ options:{plugins:{legend:{labels:{color:'white'}}},scales:{x:{ticks:{color:'white'}},y:{ticks:{color:'white'}}}}
+});
+</script>
+</body>
+</html>
